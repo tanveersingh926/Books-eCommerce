@@ -1,16 +1,15 @@
 export class Book {
     constructor(
-        public id: number,
-        public isbn: string,
+        public _id: number,
         public title: string,
-        public subtitle: string,
-        public author: string,
-        public price: number,
-        public published: string,
-        public publisher: string,
-        public pages: number,
-        public description: string,
-        public website: string,
-        public image: string,
+        public isbn: string,
+        public pageCount: number,
+        public publishedDate: { $date: string },
+        public thumbnailUrl: string,
+        public longDescription: string,
+        public status: string,
+        public authors: Array<string>,
+        public categories: Array<string>,
+        public price: string
     ) {}
 }

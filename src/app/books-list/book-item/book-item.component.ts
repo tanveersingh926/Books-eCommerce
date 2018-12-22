@@ -10,10 +10,6 @@ export class BookItemComponent implements OnInit {
   @Input() book: Book;
   constructor() { }
 
-  showBookDetail () {
-    console.log(this.book);
-  }
-
   buyNow (e) {
     e.stopPropagation();
     e.preventDefault();

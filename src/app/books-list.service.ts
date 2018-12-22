@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Book } from './shared/book.model';
 import { map } from 'rxjs/operators';
+import { Subscribable, Subject, of } from 'rxjs';
 
 
 @Injectable({
@@ -9,27 +10,39 @@ import { map } from 'rxjs/operators';
 })
 export class BooksListService {
   private books: Array<Book>;
+
   constructor(private http: HttpClient) { }
 
   getBooks () {
-    return this.http.get('assets/data/books.json').pipe(
+    // return this.http.get('http://localhost:4300/books').pipe(
+    return this.http.get('https://api.myjson.com/bins/j82l2')
+    .pipe(
       map ((response) => {
-        this.books = response;
         console.log(response);
+        this.books = response;
+        // console.log(response);
         return this.books;
       })
     );
   }
 
-  addBook(book: Book) {
-    if (this.books === undefined) {
-      this.getBooks().subscribe(() => {
-        this.books.push(book);
-      });
-      return;
-    }
-
-    this.books.push(book);
-    // this.recipesChanged.next(this.recipes.slice());
+  getBook(bookId: number) {
+    // return this.books.pipe()
+    let test: Book;
+    this.books.map((book) => {
+      if (book._id === bookId) {
+        console.log(book);
+        test = book;
+      }
+    });
+    return of(test);
+    // return of(this.books).pipe(map((books) => {
+    //   return books.map((book) => {
+    //     if (book._id === bookId) {
+    //       console.log(book);
+    //       return of(book);
+    //     }
+    //   });
+    // }));
   }
 }
