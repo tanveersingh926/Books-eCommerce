@@ -17,22 +17,20 @@ export class BookDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
   ) { }
-  // addBook () {
-  //   const book = new Book(122, 'asdsa', 'asdsa', 'asdsa', 'asdsa', 22, 'asdsa', 'asdsa', 55, 'asdsa', 'asdsa', 'asdsa');
-  //   this.booksListService.addBook(book);
-  //   console.log('done');
-  // }
+
+  buyNow () {
+    this.booksListService.bookTobuy(this.book);
+    this.router.navigate(['/checkout']);
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      console.log(params);
       this.bookId = +params['id'];
 
       this.booksListService.getBook(this.bookId).subscribe((data: Book) => {
         this.book = data;
       });
     });
-    // this.bookId =
   }
 
 }

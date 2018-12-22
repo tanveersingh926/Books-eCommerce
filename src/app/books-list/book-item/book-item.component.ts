@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Book } from 'src/app/shared/book.model';
+import { BooksListService } from 'src/app/books-list.service';
+import { Router } from '@angular/router';
+import { ElementHandleEventFn } from '@angular/core/src/view';
 
 @Component({
   selector: 'app-book-item',
@@ -8,12 +11,16 @@ import { Book } from 'src/app/shared/book.model';
 })
 export class BookItemComponent implements OnInit {
   @Input() book: Book;
-  constructor() { }
+  constructor(
+    private booksListService: BooksListService,
+    private router: Router
+  ) { }
 
-  buyNow (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    console.log('Buy Now');
+  buyNow (event) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.booksListService.bookTobuy(this.book);
+    this.router.navigate(['/checkout']);
 
   }
   ngOnInit() {}

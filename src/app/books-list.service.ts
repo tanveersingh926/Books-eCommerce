@@ -10,39 +10,39 @@ import { Subscribable, Subject, of } from 'rxjs';
 })
 export class BooksListService {
   private books: Array<Book>;
+  private booksTobuy: Array<Book> = [];
 
   constructor(private http: HttpClient) { }
 
   getBooks () {
-    // return this.http.get('http://localhost:4300/books').pipe(
-    return this.http.get('https://api.myjson.com/bins/j82l2')
-    .pipe(
-      map ((response) => {
-        console.log(response);
-        this.books = response;
-        // console.log(response);
-        return this.books;
-      })
-    );
+    if (this.books === undefined) {
+      return this.http.get<Book[]>('https://api.myjson.com/bins/j82l2')
+      .pipe(
+        map ((books) => {
+          this.books = books;
+          // console.log(response);
+          return this.books;
+        })
+      );
+    } else {
+      return of(this.books);
+    }
+
   }
 
   getBook(bookId: number) {
-    // return this.books.pipe()
-    let test: Book;
+    let selectedBook: Book;
+
     this.books.map((book) => {
       if (book._id === bookId) {
-        console.log(book);
-        test = book;
+        selectedBook = book;
       }
     });
-    return of(test);
-    // return of(this.books).pipe(map((books) => {
-    //   return books.map((book) => {
-    //     if (book._id === bookId) {
-    //       console.log(book);
-    //       return of(book);
-    //     }
-    //   });
-    // }));
+
+    return of(selectedBook);
+  }
+
+  bookTobuy (book: Book) {
+    this.booksTobuy.push(book);
   }
 }
