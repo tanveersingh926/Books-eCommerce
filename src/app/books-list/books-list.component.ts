@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksListService } from '../books-list.service';
-import { Book } from '../shared/book.model';
+import { BooksListService } from '../shared/books-list.service';
+import { Book } from './book.model';
 @Component({
   selector: 'app-books-list',
   templateUrl: './books-list.component.html',

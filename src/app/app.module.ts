@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';;
+import { FormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { BookItemComponent } from './books-list/book-item/book-item.component';
-import { BooksListService } from './books-list.service';
+import { BooksListService } from './shared/books-list.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BookDetailsComponent } from './books-list/book-details/book-details.component';
 import { CheckoutComponent } from './checkout/checkout.component';

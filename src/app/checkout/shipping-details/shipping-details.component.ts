@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ShippingDetailsComponent implements OnInit {
   shippingAddress = {};
-  states;
+  states: any;
   @ViewChild('f') shippingForm: NgForm;
 
   constructor(private statesList: StatesList) { }
@@ -19,7 +19,7 @@ export class ShippingDetailsComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    const value = form.value;
+    // const value = form.value;
     console.log(form);
   }
 

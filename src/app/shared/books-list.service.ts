@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Book } from './shared/book.model';
-import { map, catchError } from 'rxjs/operators';
+import { Book } from '../books-list/book.model';
+import { map } from 'rxjs/operators';
 import { Subject, of } from 'rxjs';
-
+import { ShoppingCart } from './shopping-cart.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +11,7 @@ import { Subject, of } from 'rxjs';
 export class BooksListService {
   private books: Array<Book> ;
 
-  private shoppingCart: {
-  'subtotal': number;
-  'tax': number;
-  'total': number;
-  'shipping': number;
-} = {
+  private shoppingCart: ShoppingCart = {
     'subtotal': 0,
     'shipping': 400,
     'tax': 200,

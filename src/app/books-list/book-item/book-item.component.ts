@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Book } from 'src/app/shared/book.model';
-import { BooksListService } from 'src/app/books-list.service';
+import { Book } from 'src/app/books-list/book.model';
+import { BooksListService } from 'src/app/shared/books-list.service';
 import { Router } from '@angular/router';
-import { ElementHandleEventFn } from '@angular/core/src/view';
 
 @Component({
   selector: 'app-book-item',
@@ -16,7 +15,7 @@ export class BookItemComponent implements OnInit {
     private router: Router
   ) { }
 
-  buyNow (event) {
+  buyNow (event: any) {
     event.stopPropagation();
     event.preventDefault();
     this.booksListService.bookTobuy(this.book);

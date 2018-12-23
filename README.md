@@ -1,27 +1,30 @@
+[INPROGRESS]
 # Ecommerce
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4. It is not completed there are still plenty of things need to be implemented.
 
-## Development server
+## To View Demo
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Features Implemented
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Routing via Angular Router
+- Auth Guard
+- Interceptor
+- Landing Page with all books
+- Details Page
+- UI checkout screen
+- UI My orders
+---
 
-## Build
+## Features Pending
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Annotation for Methods.
+- Shipping address for Checkout.
+- My orders page integration with code.
+- Caching assets and dynamic images.
+- Angular Materials for dialogs.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## CSS Spinner
+Loader: https://codepen.io/animatedcreativity/pen/OjBPQJ
