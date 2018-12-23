@@ -3,7 +3,7 @@
   <div class="card-body">
     <h5 class="card-title">{{book.title}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{book.authors}}</h6>
-    <p class="card-text">{{book.price | currency}}</p>
+    <p class="card-text">{{book.price | centsToDollar | currency}}</p>
     <a href="#" class="btn btn-primary" (click)="buyNow($event)">Buy Now</a>
   </div>
 </div>

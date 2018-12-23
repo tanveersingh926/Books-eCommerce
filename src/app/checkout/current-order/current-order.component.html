@@ -1,0 +1,25 @@
+<h2>Shopping Bag</h2>
+
+<div class="order-items mt-4">
+  <app-current-order-item 
+    *ngFor="let book of selectedBooks"
+    [book]="book"
+  ></app-current-order-item>
+</div>
+
+<hr />
+
+<div class="text-right">
+
+  <p>Subtotal : {{cartDetail.subtotal | centsToDollar | currency}}</p>                
+  <p>Standard Shipping : {{cartDetail.shipping | centsToDollar | currency}}</p>
+  <p>Tax : {{cartDetail.tax | centsToDollar | currency}}</p>
+  <p>Payment Method : Cash on Delivery</p>
+  
+  <hr>
+  
+  <p>Total : {{cartDetail.total | centsToDollar | currency}}</p>
+
+  <button type="submit" class="btn btn-primary btn-lg btn-block">Purchase</button>
+  <button routerLink="/books" class="btn btn-outline-primary btn-lg btn-block">Cancel</button>
+</div>

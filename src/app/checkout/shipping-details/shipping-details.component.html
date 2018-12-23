@@ -1,0 +1,74 @@
+<h2>Shipping Details</h2>
+{{shippingAddress | json}}
+
+<form class="mt-4" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>First Name</label>
+        <input type="text" class="form-control" placeholder="First Name"
+          required
+          [(ngModel)]="shippingAddress.firstName"
+          name="firstName"
+        >
+      </div>
+      <div class="form-group col-md-6">
+        <label>Last Name</label>
+        <input type="text" class="form-control" placeholder="Last Name"
+        required
+        [(ngModel)]="shippingAddress.lastName"
+        name="lastName"
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <input type="text" class="form-control" placeholder="1234 Main St" 
+      required
+      [(ngModel)]="shippingAddress.address1"
+      name="address1">
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Address 2</label>
+      <input type="text" class="form-control" id="inputAddress2" 
+      [(ngModel)]="shippingAddress.address2"
+      name="address2"
+      placeholder="Apartment, studio, or floor">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">City</label>
+        <input type="text" class="form-control" id="inputCity"
+        required
+        [(ngModel)]="shippingAddress.city"
+        name="city"
+        >
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputState">State</label>
+        <select id="inputState" class="form-control" 
+        required
+        [(ngModel)]="shippingAddress.state"
+        name="state"
+        >
+          <option selected>Choose...</option>
+          <option *ngFor="let state of states" [value]="state.key">{{state.name}}</option>
+        </select>
+      </div>
+      
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputZip">Zip</label>
+        <input type="text" class="form-control" id="inputZip"
+        [(ngModel)]="shippingAddress.zip"
+        name="zip"
+        >
+      </div>
+    </div>
+    <div class="text-left">
+      <button type="submit" class="btn btn-primary mr-1"
+      [disabled]="!f.valid"
+      >Save address</button>
+      <button type="button" (click)="onClear()" class="btn btn-outline-primary">Reset</button>
+    </div>
+</form>
