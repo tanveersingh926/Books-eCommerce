@@ -1,8 +1,8 @@
-<div class="mt-3">
-    <app-order-item></app-order-item>
-  
-    <app-order-item></app-order-item>
-  
-    <app-order-item></app-order-item>
-  
+<div class="mt-3" *ngIf="ordersHistory.length > 0; else noOrders">
+  <app-order-item *ngFor="let order of ordersHistory" [order]='order'></app-order-item>
+</div>
+<ng-template #noOrders>
+  <div class="mt-3">
+    There are no previous orders.
   </div>
+</ng-template>

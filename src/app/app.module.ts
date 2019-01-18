@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { environment } from '../environments/environment'; // Angular CLI environemnt
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+// import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +26,10 @@ import { CentsToDollarPipe } from './shared/cents-to-dollar.pipe';
 
 import { HTTPListener, HTTPStatus } from './auth/http.interceptor';
 
+import { BooksEffects } from './books-list/store/books.effects';
+// import * as fromBooks from './books-list/store/books.reducers';
+import { reducers } from './store/app.reducers';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,13 +43,19 @@ import { HTTPListener, HTTPStatus } from './auth/http.interceptor';
     ShippingDetailsComponent,
     CurrentOrderComponent,
     CurrentOrderItemComponent,
-    CentsToDollarPipe
+    CentsToDollarPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
+    EffectsModule.forRoot([BooksEffects]),
   ],
   providers: [
     HTTPStatus,

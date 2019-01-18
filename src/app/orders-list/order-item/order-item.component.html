@@ -2,21 +2,33 @@
   <div class="col-sm-12">
     <div class="card mb-3">
       <div class="card-header">
-        Order Status: <b>Shipped</b>
+        Order Status: <b>{{order.orderStatus.status}}</b>
       </div>
       <div class="card-body" >
         <div class="row">
-          <div class="col-sm-2">
-            <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/rappin.jpg" class="img-fluid" alt="asdas">
+          <div class="col-sm-6" *ngFor="let book of order.selectedBooks">
+            <div class="row">
+              <div class="col-sm-2">
+                <img src="{{book.thumbnailUrl}}" class="img-fluid" alt="{{book.title}}">
+              </div>
+              <div class="col-sm-10">
+                <h5 class="card-title">{{book.title}}</h5>
+                <h6 class="card-subtitle">Price: {{book.price | centsToDollar | currency}}</h6>
+                <p class="card-text mt-3">
+                  <a routerLink="/book-details/{{book._id}}">Book Details</a>
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="col-sm-10">
-            <h5 class="card-title">Book Title</h5>
-            <h6 class="card-subtitle">Book Sub Title Goes Here</h6>
-            <p class="card-text mt-3">
-              Book Price <br />
-              Shipped To: Ashwin <br />
-              Shipped On: 12/11/2012 <br />
-              <a routerLink="/book-details/2">Book Details</a>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <hr />
+            <p class="card-text">
+              Order Total: {{order.paymentDetails.total | centsToDollar | currency}} <br />
+              Shipped To: {{order.shippingDetails.address.firstName}} <br />
+              Shipped On: {{order.orderStatus.shippedOn | date : 'dd/MM/yyyy'}} <br />
+              No. of Books: {{order.selectedBooks.length}}
             </p>
           </div>
         </div>

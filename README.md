@@ -9,20 +9,20 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Features Implemented
 
+- @ngrx/store
+- @ngrx/effects
 - Routing via Angular Router
 - Auth Guard
 - Interceptor
 - Landing Page with all books
 - Details Page
-- UI checkout screen
-- UI My orders
+- Checkout screen
+- My orders
 ---
 
 ## Features Pending
 
 - Annotation for Methods.
-- Shipping address for Checkout.
-- My orders page integration with code.
 - Caching assets and dynamic images.
 - Angular Materials for dialogs.
 

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Book } from 'src/app/books-list/book.model';
-import { BooksListService } from 'src/app/shared/books-list.service';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../../store/app.reducers';
+import * as CheckoutActions from '../../store/checkout.actions';
 
 @Component({
   selector: 'app-current-order-item',
@@ -9,11 +11,15 @@ import { BooksListService } from 'src/app/shared/books-list.service';
 })
 export class CurrentOrderItemComponent implements OnInit {
   @Input() book: Book;
-  constructor(private booksListService: BooksListService) { }
+  constructor(
+      private store: Store<fromApp.AppState>
+    ) { }
 
   removeBook(event) {
     event.preventDefault();
-    this.booksListService.removeSelectedBookToBuy(this.book._id);
+    this.store.dispatch(new CheckoutActions.RemoveBook(this.book._id));
+    this.store.dispatch(new CheckoutActions.UpdatePaymentDetails());
+
   }
 
   ngOnInit() {

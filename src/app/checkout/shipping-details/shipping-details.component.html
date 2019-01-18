@@ -1,6 +1,25 @@
 <h2>Shipping Details</h2>
 
-<form class="mt-4" (ngSubmit)="onSubmit(f)" #f="ngForm">
+<ng-template #showAddress>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Address</h5>
+          <p class="card-text">
+            {{shippingAddress.firstName}} {{shippingAddress.lastName}},<br />
+            {{shippingAddress.addressLine1}}<br />
+            <span *ngIf="shippingAddress.addressLine2">{{shippingAddress.addressLine2}}<br /></span>
+            {{shippingAddress.city}}-{{shippingAddress.zip}},<br />
+            {{shippingAddress.state}}.
+          </p>
+          <button class="btn btn-primary" (click)="onAddressEdit()">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<form class="mt-4" (ngSubmit)="onSubmit(shippingForm)" #shippingForm="ngForm" *ngIf="editForm; else showAddress">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>First Name</label>
@@ -8,29 +27,43 @@
           required
           [(ngModel)]="shippingAddress.firstName"
           name="firstName"
+          #firstName="ngModel"
         >
+        <div [hidden]="firstName.valid || firstName.untouched" class="alert alert-danger">
+          First name is required.
+        </div>
       </div>
+
       <div class="form-group col-md-6">
         <label>Last Name</label>
         <input type="text" class="form-control" placeholder="Last Name"
-        required
-        [(ngModel)]="shippingAddress.lastName"
-        name="lastName"
+          required
+          [(ngModel)]="shippingAddress.lastName"
+          name="lastName"
+          #lastName="ngModel"
         >
+        <div [hidden]="lastName.valid || lastName.untouched" class="alert alert-danger">
+          Last name is required.
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label>Address</label>
       <input type="text" class="form-control" placeholder="1234 Main St" 
-      required
-      [(ngModel)]="shippingAddress.address1"
-      name="address1">
+        required
+        [(ngModel)]="shippingAddress.addressLine1"
+        name="addressLine1"
+        #addressLine1="ngModel"
+      >
+      <div [hidden]="addressLine1.valid || addressLine1.untouched" class="alert alert-danger">
+        Address is required.
+      </div>
     </div>
     <div class="form-group">
-      <label for="inputAddress2">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" 
-      [(ngModel)]="shippingAddress.address2"
-      name="address2"
+      <label for="inputAddressLine2">Address 2</label>
+      <input type="text" class="form-control" id="inputAddressLine2" 
+      [(ngModel)]="shippingAddress.addressLine2"
+      name="addressLine2"
       placeholder="Apartment, studio, or floor">
     </div>
     <div class="form-row">
@@ -40,7 +73,11 @@
         required
         [(ngModel)]="shippingAddress.city"
         name="city"
+        #city="ngModel"
         >
+        <div [hidden]="city.valid || city.untouched" class="alert alert-danger">
+          City is required.
+        </div>
       </div>
       <div class="form-group col-md-6">
         <label for="inputState">State</label>
@@ -48,10 +85,14 @@
         required
         [(ngModel)]="shippingAddress.state"
         name="state"
+        #state="ngModel"
         >
           <option selected>Choose...</option>
-          <option *ngFor="let state of states" [value]="state.key">{{state.name}}</option>
+          <option *ngFor="let state of states" [value]="state.name">{{state.name}}</option>
         </select>
+        <div [hidden]="state.valid || state.untouched" class="alert alert-danger">
+          State is required.
+        </div>
       </div>
       
     </div>
@@ -59,15 +100,21 @@
       <div class="form-group col-md-6">
         <label for="inputZip">Zip</label>
         <input type="text" class="form-control" id="inputZip"
+        required
         [(ngModel)]="shippingAddress.zip"
         name="zip"
+        #zip="ngModel"
         >
+        <div [hidden]="zip.valid || zip.untouched" class="alert alert-danger">
+          Zip is required.
+        </div>
       </div>
     </div>
     <div class="text-left">
       <button type="submit" class="btn btn-primary mr-1"
-      [disabled]="!f.valid"
+      [disabled]="!shippingForm.valid"
       >Save address</button>
       <button type="button" (click)="onClear()" class="btn btn-outline-primary">Reset</button>
     </div>
+    <!-- {{shippingAddress | json}} -->
 </form>

@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/books-list/book.model';
-import { BooksListService } from 'src/app/shared/books-list.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '../../store/app.reducers';
+import * as BooksActions from '../store/books.actions';
+import * as CheckoutActions from '../../checkout/store/checkout.actions';
+import { BooksListService } from 'src/app/shared/books-list.service';
 
 @Component({
   selector: 'app-book-details',
@@ -13,13 +18,15 @@ export class BookDetailsComponent implements OnInit {
   book: Book;
 
   constructor(
-    private booksListService: BooksListService,
     private route: ActivatedRoute,
     private router: Router,
+    private store: Store<fromApp.AppState>,
+    private booksListService: BooksListService
   ) { }
 
   buyNow () {
-    this.booksListService.bookTobuy(this.book);
+    this.booksListService.buyBook(this.book);
+
     this.router.navigate(['/checkout']);
   }
 
@@ -27,9 +34,19 @@ export class BookDetailsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.bookId = +params['id'];
 
-      this.booksListService.getBook(this.bookId).subscribe((data: Book) => {
-        this.book = data;
-      });
+      this.store.select('books').subscribe(
+        (books) => {
+          if (!books.booksList.length) {
+            this.store.dispatch(new BooksActions.TryFetchBooks());
+          }
+          books.booksList.map((book) => {
+            if (book._id === this.bookId) {
+              this.book = book;
+            }
+          });
+        }
+      );
+
     });
   }
 

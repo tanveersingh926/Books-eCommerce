@@ -1,27 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Book } from 'src/app/books-list/book.model';
-import { BooksListService } from 'src/app/shared/books-list.service';
 import { Router } from '@angular/router';
+import { BooksListService } from 'src/app/shared/books-list.service';
 
 @Component({
   selector: 'app-book-item',
   templateUrl: './book-item.component.html',
   styleUrls: ['./book-item.component.scss']
 })
-export class BookItemComponent implements OnInit {
+export class BookItemComponent {
   @Input() book: Book;
   constructor(
-    private booksListService: BooksListService,
-    private router: Router
+    private router: Router,
+    private booksListService: BooksListService
   ) { }
 
   buyNow (event: any) {
     event.stopPropagation();
     event.preventDefault();
-    this.booksListService.bookTobuy(this.book);
-    this.router.navigate(['/checkout']);
 
+    this.booksListService.buyBook(this.book);
+
+    this.router.navigate(['/checkout']);
   }
-  ngOnInit() {}
 
 }
