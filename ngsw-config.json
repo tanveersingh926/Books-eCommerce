@@ -22,5 +22,19 @@
         ]
       }
     }
+  ],
+  "dataGroups":[
+    {
+      "name":"books",
+      "urls": [
+        "https://api.myjson.com/bins/j82l2"
+      ],
+      "cacheConfig": {
+        "maxSize": 1,
+        "maxAge": "2m",
+        "timeout": "3s",
+        "strategy": "performance"
+      }
+    }
   ]
 }
