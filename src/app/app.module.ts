@@ -7,6 +7,7 @@ import { environment } from '../environments/environment'; // Angular CLI enviro
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,13 +22,11 @@ import { BookDetailsComponent } from './books-list/book-details/book-details.com
 
 import { HTTPListener, HTTPStatus } from './auth/http.interceptor';
 
-import { OrdersListComponent } from './orders-list/orders-list.component';
-import { OrderItemComponent } from './orders-list/order-item/order-item.component';
-
 import { reducers } from './store/app.reducers';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CheckoutModule } from './checkout/checkout.module';
 import { SharedModule } from './shared/shared.module';
+import { OrdersListModule } from './orders-list/orders-list.module';
 
 @NgModule({
   declarations: [
@@ -35,14 +34,13 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     BooksListComponent,
     BookItemComponent,
-    BookDetailsComponent,
-    OrdersListComponent,
-    OrderItemComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),
     CheckoutModule,
     SharedModule,
+    OrdersListModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -53,6 +51,7 @@ import { SharedModule } from './shared/shared.module';
     }),
     EffectsModule.forRoot([BooksEffects]),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    StoreRouterConnectingModule
   ],
   providers: [
     HTTPStatus,
