@@ -18,7 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     imports: [
         FormsModule,
         CommonModule,
-        SharedModule
+        SharedModule,
     ]
 })
 export class CheckoutModule {}

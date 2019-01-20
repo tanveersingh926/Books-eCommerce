@@ -9,6 +9,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
+import { MatTooltipModule } from '@angular/material';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -26,6 +28,7 @@ import { reducers } from './store/app.reducers';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CheckoutModule } from './checkout/checkout.module';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatTooltipModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -49,7 +53,8 @@ import { SharedModule } from './shared/shared.module';
     }),
     EffectsModule.forRoot([BooksEffects]),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    StoreRouterConnectingModule
+    StoreRouterConnectingModule,
+    BrowserAnimationsModule
   ],
   providers: [
     HTTPStatus,

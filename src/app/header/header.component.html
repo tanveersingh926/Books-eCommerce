@@ -12,7 +12,15 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="my-orders">My orders</a>
       </li>
-
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" 
+          routerLink="checkout"
+          matTooltip="Please add a book in cart"
+          [matTooltipPosition]="'right'"
+          matTooltipClass="header-tooltip"
+          #tooltip="matTooltip"
+          >Checkout</a>
+      </li>
     </ul>
   </div>
 </nav>
