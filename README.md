@@ -1,4 +1,4 @@
-[INPROGRESS]
+[DONE]
 # Ecommerce
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4. It is not completed there are still plenty of things need to be implemented.
@@ -20,6 +20,7 @@ Build the application in production mode, run `ng build --prod`. It will generat
 - Angular Universal
 - Service Workers
 - Caching assets offline and dynamic
+- Angular Materials for tooltip - In header for Checkout link
 - Routing via Angular Router
 - Auth Guard
 - Interceptor
@@ -29,10 +30,9 @@ Build the application in production mode, run `ng build --prod`. It will generat
 - My orders
 ---
 
-## Features Not Implemented
+## Not Implemented
 
 - Annotation for Methods.
-- Angular Materials for dialogs.
 
 ## CSS Spinner
 Loader: https://codepen.io/animatedcreativity/pen/OjBPQJ
