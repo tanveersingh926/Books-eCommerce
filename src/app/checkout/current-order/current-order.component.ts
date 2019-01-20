@@ -29,7 +29,7 @@ export class CurrentOrderComponent implements OnInit {
           (data) => {
             this.selectedBooks = data.checkout.selectedBooks;
             this.cartDetail = data.checkout.paymentDetails;
-            this.purchaseBtnState = data.checkout.shippingDetails.isAddressAvailable;
+            this.purchaseBtnState = data.checkout.shippingDetails.isAddressAvailable && !!data.checkout.selectedBooks.length;
           }
       );
   }
@@ -41,13 +41,18 @@ export class CurrentOrderComponent implements OnInit {
       )
       .subscribe(
         (data) => {
+          console.log(data);
+          if (!data.selectedBooks.length) {
+            alert('You don\'t have any books in your shopping bag');
+            return;
+          }
           data.orderStatus.shippedOn = new Date();
           this.store.dispatch(new OrdersHistoryActions.AddToHistory(data));
           this.store.dispatch(new CheckoutActions.CompletePurchase());
+          this.router.navigate(['/my-orders']);
         }
       );
 
-    this.router.navigate(['/my-orders']);
   }
 
   cancelPurchase() {
