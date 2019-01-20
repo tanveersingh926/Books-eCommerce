@@ -24,7 +24,7 @@ Install all dependencies, run `npm install`. Run `npm run serve:ssr` then naviga
 - My orders
 ---
 
-## Features Pending
+## Features Not Implemented
 
 - Annotation for Methods.
 - Caching assets and dynamic images.
