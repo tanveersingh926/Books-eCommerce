@@ -29,6 +29,7 @@ import { HTTPListener, HTTPStatus } from './auth/http.interceptor';
 import { BooksEffects } from './books-list/store/books.effects';
 // import * as fromBooks from './books-list/store/books.reducers';
 import { reducers } from './store/app.reducers';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { reducers } from './store/app.reducers';
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
     EffectsModule.forRoot([BooksEffects]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     HTTPStatus,
