@@ -5,6 +5,7 @@ import * as fromApp from '../../store/app.reducers';
 import { Store } from '@ngrx/store';
 import * as CheckoutActions from '../store/checkout.actions';
 import { Address } from '../../shared/single-order';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shipping-details',
@@ -32,6 +33,12 @@ export class ShippingDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.states = this.statesList.getStates();
+    this.store.select('checkout').pipe(take(1)).subscribe(
+      (data) => {
+        this.editForm = !data.shippingDetails.isAddressAvailable;
+        this.shippingAddress = data.shippingDetails.address;
+      }
+    );
   }
 
   onSubmit(form: NgForm) {

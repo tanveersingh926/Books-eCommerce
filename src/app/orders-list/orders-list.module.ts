@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -20,8 +19,7 @@ import { OrdersListRoutingModule } from './orders-list-routing.module';
     SharedModule,
     CommonModule,
     OrdersListRoutingModule,
-    RouterModule,
-    StoreModule.forFeature('orders-list', OrdersHistoryReducer)
+    StoreModule.forFeature('ordersHistory', OrdersHistoryReducer)
   ]
 })
 export class OrdersListModule {}

@@ -12,15 +12,15 @@ export interface State {
 const initialState = {
     selectedBooks: [],
     shippingDetails: {
-        isAddressAvailable: false, // true,
+        isAddressAvailable: false,
         address: {
-            firstName: '', // 'Tanveer',
-            lastName: '', // 'Singh',
-            addressLine1: '', // 'abc',
-            addressLine2: '', // 'def',
-            city: '', // 'Amritsar',
-            state: '', // 'Punjab',
-            zip: '' // '143001'
+            firstName: '',
+            lastName: '',
+            addressLine1: '',
+            addressLine2: '',
+            city: '',
+            state: '',
+            zip: ''
         }
     },
     paymentDetails: {
@@ -85,13 +85,59 @@ export function CheckoutReducer(state = initialState, action: CheckoutActions.Ch
 
         case CheckoutActions.COMPLETE_PURCHASE:
             return {
-                ...initialState
+                selectedBooks: [],
+                shippingDetails: {
+                    isAddressAvailable: false,
+                    address: {
+                        firstName: '',
+                        lastName: '',
+                        addressLine1: '',
+                        addressLine2: '',
+                        city: '',
+                        state: '',
+                        zip: ''
+                    }
+                },
+                paymentDetails: {
+                    subTotal: 0,
+                    shipping: 400,
+                    tax: 200,
+                    paymentMethod: 'COD',
+                    total: 0
+                },
+                orderStatus: {
+                    status: 'Shipped',
+                    shippedOn: null,
+                }
             };
 
         case CheckoutActions.CANCEL_PURCHASE:
-            return {
-                ...initialState
-            };
+        return {
+            selectedBooks: [],
+            shippingDetails: {
+                isAddressAvailable: false,
+                address: {
+                    firstName: '',
+                    lastName: '',
+                    addressLine1: '',
+                    addressLine2: '',
+                    city: '',
+                    state: '',
+                    zip: ''
+                }
+            },
+            paymentDetails: {
+                subTotal: 0,
+                shipping: 400,
+                tax: 200,
+                paymentMethod: 'COD',
+                total: 0
+            },
+            orderStatus: {
+                status: 'Shipped',
+                shippedOn: null,
+            }
+        };
 
         case CheckoutActions.UPDATE_ADDRESS:
             return {
