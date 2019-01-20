@@ -7,7 +7,6 @@ import { OrdersListComponent } from './orders-list/orders-list.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  // { path: '/books', component: BooksListComponent, pathMatch: 'full'},
   { path: 'books', component: BooksListComponent},
   { path: 'book-details/:id', component: BookDetailsComponent },
   { path: 'checkout', component: CheckoutComponent , canActivate: [AuthGuard]},
