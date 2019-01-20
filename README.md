@@ -20,6 +20,8 @@ Build the application in production mode, run `ng build --prod`. It will generat
 - Angular Universal
 - Service Workers
 - Caching assets offline and dynamic
+- Angular Modules
+- Lazy Loading for Orders-list module
 - Angular Materials for tooltip - In header for Checkout link
 - Routing via Angular Router
 - Auth Guard

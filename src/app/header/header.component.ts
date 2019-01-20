@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../store/app.reducers';
 import { Router } from '@angular/router';
+import { MatTooltip } from '@angular/material';
 
 @Component({
   selector: 'app-header',
@@ -10,14 +11,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   haveBooksToBuy = false;
-  @ViewChild('tooltip') tooltip;
+  @ViewChild('tooltip') tooltip: MatTooltip;
   constructor(
     private store: Store<fromApp.AppState>,
     private router: Router
   ) { }
 
   ngOnInit() {
-    console.log(this.tooltip);
     this.store.select('checkout').subscribe(
       (data) => {
         this.haveBooksToBuy = !!data.selectedBooks.length;
