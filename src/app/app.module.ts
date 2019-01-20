@@ -46,7 +46,7 @@ import { reducers } from './store/app.reducers';
     CentsToDollarPipe,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'my-app'}),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

@@ -1,4 +1,4 @@
-import { Book } from 'src/app/books-list/book.model';
+import { Book } from '../books-list/book.model';
 
 export interface ShippingDetails {
     isAddressAvailable: boolean;

@@ -1,5 +1,5 @@
 import * as OrdersHistoryActions from './orders-list.actions';
-import { SingleOrder } from 'src/app/shared/single-order';
+import { SingleOrder } from '../../shared/single-order';
 
 export interface State {
    ordersHistory: SingleOrder[];

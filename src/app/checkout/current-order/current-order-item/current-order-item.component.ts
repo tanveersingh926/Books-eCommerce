@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Book } from 'src/app/books-list/book.model';
+import { Book } from '../../../books-list/book.model';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducers';
 import * as CheckoutActions from '../../store/checkout.actions';

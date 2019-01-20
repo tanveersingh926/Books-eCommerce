@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from 'src/app/books-list/book.model';
+import { Book } from '../book.model';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import * as fromApp from '../../store/app.reducers';
 import * as BooksActions from '../store/books.actions';
 import * as CheckoutActions from '../../checkout/store/checkout.actions';
-import { BooksListService } from 'src/app/shared/books-list.service';
+import { BooksListService } from '../../shared/books-list.service';
 
 @Component({
   selector: 'app-book-details',

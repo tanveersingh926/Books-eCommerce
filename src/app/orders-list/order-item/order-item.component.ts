@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SingleOrder } from 'src/app/shared/single-order';
+import { SingleOrder } from '../../shared/single-order';
 
 @Component({
   selector: 'app-order-item',

@@ -1,5 +1,5 @@
 import * as CheckoutActions from './checkout.actions';
-import { Book } from 'src/app/books-list/book.model';
+import { Book } from '../../books-list/book.model';
 import * as singleOrder from '../../shared/single-order';
 
 export interface State {

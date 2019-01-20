@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { Book } from 'src/app/books-list/book.model';
-import { Address } from 'src/app/shared/single-order';
+import { Book } from '../../books-list/book.model';
+import { Address } from '../../shared/single-order';
 
 export const ADD_BOOK = 'ADD_BOOK';
 export const REMOVE_BOOK = 'REMOVE_BOOK';

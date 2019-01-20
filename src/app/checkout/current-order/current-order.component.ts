@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import { Book } from 'src/app/books-list/book.model';
-import { ShoppingCart } from 'src/app/shared/shopping-cart.model';
+import { Book } from '../../books-list/book.model';
+import { ShoppingCart } from '../../shared/shopping-cart.model';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducers';
 import * as CheckoutActions from '../store/checkout.actions';

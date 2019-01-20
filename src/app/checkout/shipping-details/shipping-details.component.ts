@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { StatesList } from 'src/app/shared/data-storage.service';
+import { StatesList } from '../../shared/data-storage.service';
 import { NgForm } from '@angular/forms';
 import * as fromApp from '../../store/app.reducers';
 import { Store } from '@ngrx/store';
 import * as CheckoutActions from '../store/checkout.actions';
-import { Address } from 'src/app/shared/single-order';
+import { Address } from '../../shared/single-order';
 
 @Component({
   selector: 'app-shipping-details',
