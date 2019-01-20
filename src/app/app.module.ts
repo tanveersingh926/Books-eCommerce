@@ -26,7 +26,6 @@ import { reducers } from './store/app.reducers';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CheckoutModule } from './checkout/checkout.module';
 import { SharedModule } from './shared/shared.module';
-import { OrdersListModule } from './orders-list/orders-list.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { OrdersListModule } from './orders-list/orders-list.module';
     BrowserModule.withServerTransition({appId: 'my-app'}),
     CheckoutModule,
     SharedModule,
-    OrdersListModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
